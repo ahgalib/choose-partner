@@ -35,11 +35,16 @@ class ProfileCon extends Controller
         return redirect("/profilePage/{$request->user()->profile->id}");
     }
 
-    public function showProfilePage(UserProfile $profile){
-        // $data = UserProfile::find($id);
-        // $self = YourSelf::with('profile')->find($id);
-        return view('profile/profilePage',compact('profile'));
+    //this is one way of show specific data by pass there id
+    public function showProfilePage($id){
+        $data = UserProfile::find($id);
+        return view('profile/profilePage',compact('data'));
     }
+
+    //this is another way to show specific data by pass the profile
+    // public function showProfilePage(UserProfile $profile){  
+    //    return view('profile/profilePage',compact('profile'));
+    // }
 
     public function aboutYourSelfPageForm(){
         
@@ -49,7 +54,7 @@ class ProfileCon extends Controller
     public function saveYourSelfFrom(Request $request){
         //return $request->all();
         YourSelf::create([
-            'user_id'=>auth()->user()->id,
+            'user_profile_id'=>auth()->user()->profile->id,
             'about_you'=>$request['about_you'],
             'hobbies'=>$request['hobbies'],
             'aim'=>$request['aim'],
@@ -57,7 +62,7 @@ class ProfileCon extends Controller
             'height'=>$request['height'],
             'weight'=>$request['weight'],
             'dream'=>$request['dream'],
-            'profile_id'=>auth()->user()->profile->id,
+            
 
         ]);
         return back();

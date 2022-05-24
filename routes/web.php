@@ -26,7 +26,7 @@ Route::post('logout',[App\Http\Controllers\HomeController::class, 'logout']);
 //Profile 
 Route::get('/createProfile',[ProfileCon::class,'createProfile']);
 Route::post('/saveProfile',[profileCon::class,'saveProfile']);
-Route::get('/profilePage/{profile}',[ProfileCon::class,'showProfilePage']);
+Route::get('/profilePage/{id}',[ProfileCon::class,'showProfilePage']);
 //YourSelf
 Route::get('/aboutYourSelf',[ProfileCon::class,'aboutYourSelfPageForm']);
 Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom']);

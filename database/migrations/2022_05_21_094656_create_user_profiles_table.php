@@ -24,6 +24,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('caption')->nullable();
             $table->timestamps();
+
         });
     }
 

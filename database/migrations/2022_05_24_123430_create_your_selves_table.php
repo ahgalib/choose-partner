@@ -15,7 +15,7 @@ class CreateYourSelvesTable extends Migration
     {
         Schema::create('your_selves', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_profile_id')->constrained();
             $table->string('about_you')->nullable();
             $table->string('hobbies')->nullable();
             $table->string('aim')->nullable();
