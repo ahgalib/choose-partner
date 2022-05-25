@@ -47,7 +47,6 @@ class ProfileCon extends Controller
     // }
 
     public function aboutYourSelfPageForm(){
-        
         return view('profile.yourSelf');
     }
 
@@ -63,8 +62,12 @@ class ProfileCon extends Controller
             'weight'=>$request['weight'],
             'dream'=>$request['dream'],
             
-
         ]);
         return back();
+    }
+
+    public function showEditProfilePage($id){
+        $data = UserProfile::find($id);
+        return view('profile.editProfile',compact('data'));
     }
 }

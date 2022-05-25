@@ -15,13 +15,16 @@
                     <p>{{$data['user']['name']}}</p>
 
                     <p>{{auth::user()->id}}</p>
+                    <button class="btn btn-primary"><a href="/editProfile/{{$data->id}}" class="text-white">edit profile</a></button>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
+                  <button class="btn btn-primary"><a href="/editYourSelf" class="text-white">edit profile</a></button>
                     <h4>{{$data->yourSelf->about_you}}</h4>
+
                     <h4>My Hobbi is {{$data->yourSelf->hobbies}}</h4>
                     <h4>My Altimate goal is {{$data->yourSelf->aim}}</h4>
                     <h4>{{$data->yourSelf->favourite_things}} I love to do</h4>
