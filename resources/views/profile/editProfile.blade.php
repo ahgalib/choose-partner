@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 "  >
-            <form action="saveEditProfile" method="post" enctype="multipart/form-data"style="background-color: #181717;color: aliceblue;margin-left:150px;padding-left:100px;padding-top:10px;padding-bottom:10px;">
+            <form action="/saveEditProfile/{{$data['id']}}" method="post" enctype="multipart/form-data"style="background-color: #181717;color: aliceblue;margin-left:150px;padding-left:100px;padding-top:10px;padding-bottom:10px;">
             @csrf
                 <h2 style="text-decoration:underline;">Create Your profile</h2>
 
@@ -32,7 +32,7 @@
                 <div class="form-group ">
                     <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
                    <div class="col-md-6">
-                        <input id="birth_date" type="text" class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ $data['date_of_birth'] }}"  autocomplete="birth_date" autofocus>
+                        <input id="birth_date" type="text" class="form-control @error('birth_date') is-invalid @enderror" name="date_of_birth" value="{{ $data['date_of_birth'] }}"  autocomplete="birth_date" autofocus>
                     </div>
                 </div>
                 
@@ -41,10 +41,10 @@
                     <div class="col-md-6">
                        <select name="gender" id="" class="form-control select2">
                            <option>Chose your Gender</option>
-                           @foreach($data as $genderOption)
-                           <option value="male" >Male</option>
-                           <option value="female">female</option>
-                           @endforeach
+                        
+                           <option value="male"@if($data['gender'] == 'male') selected @endif>Male</option>
+                           <option value="female" @if($data['gender'] == 'female') selected @endif>Female</option>
+                        
                        </select>
                     </div>
                 </div>

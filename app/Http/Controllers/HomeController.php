@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\UserProfile;
 class HomeController extends Controller
 {
     /**
@@ -22,8 +23,9 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $profile = UserProfile::all();
+        return view('home',compact('profile'));
     }
 
     public function logout(){

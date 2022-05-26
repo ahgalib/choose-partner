@@ -24,5 +24,21 @@
             @endif
         </div>
     </div>
+      
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <input type="checkbox">Hobby
+                    </div>
+                </div>
+                @foreach($profile as $allProfile)
+                    <div class="col-md-2 m-3">
+                        <img src="/storage/{{$allProfile['profile_picture']}}" alt="" style="width:200px;height:170px;border-radius: 50%;">
+                    </div>
+                @endforeach  
+            </div>
+           
+          
+     
 </div>
 @endsection

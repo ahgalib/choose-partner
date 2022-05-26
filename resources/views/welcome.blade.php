@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>I found a girl beautiful and sweet</h2>
+<h2>Please Login Your Account</h2>
 
 @endsection

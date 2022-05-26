@@ -70,4 +70,26 @@ class ProfileCon extends Controller
         $data = UserProfile::find($id);
         return view('profile.editProfile',compact('data'));
     }
+
+    public function saveEditProfilePage(Request $request,$id){
+        $data = $request->validate([
+            'name'=>'required',
+            'bio'=>'',
+            'education'=>'',
+            'date_of_birth'=>'',
+            'gender'=>'',
+            'profile_picture'=>'',
+            'caption'=>'',
+        ]);
+        if($request['profile_picture']){
+            $imagePath = $request['profile_picture']->store('profile','public');
+            $imageArray = ['profile_picture'=>$imagePath];
+        }
+        UserProfile::where('id',$id)->update(array_merge(
+            $data,
+            $imageArray??[],
+        ));
+        return redirect("/profilePage/{$request->user()->profile->id}");
+
+    }
 }

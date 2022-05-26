@@ -15,8 +15,11 @@ use App\Http\Controllers\ProfileCon;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
+});
+Route::get('/', function () {
+    return view('welcome');
 });
 
 Auth::routes();

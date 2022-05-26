@@ -7,12 +7,14 @@
         <div class="col-md-8">
             <div class="d-flex">
                 <div style="margin-right:50px;margin-bottom:30px;">
-                    <img src="/storage/{{$data['profile_picture']}}" alt="no image" style="width:300px;height:260px;">
+                    <img src="/storage/{{$data['profile_picture']}}" alt="" style="width:300px;height:270px;">
                 </div>
                 <div class="ml-5">
                     <p>{{$data->name}}</p>
                     <p>{{$data['user']['email']}}</p>
                     <p>{{$data['user']['name']}}</p>
+                    <p>{{$data->bio}}</p>
+                    <p>{{$data->education}}</p> <p>{{$data->date_of_birth}}</p>
 
                     <p>{{auth::user()->id}}</p>
                     <button class="btn btn-primary"><a href="/editProfile/{{$data->id}}" class="text-white">edit profile</a></button>
