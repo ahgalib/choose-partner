@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\UserProfile;
+use App\Models\YourSelf;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {   
         $profile = UserProfile::all();
-        return view('home',compact('profile'));
+        $self = YourSelf::all();
+        return view('home',compact('profile','self'));
     }
 
     public function logout(){

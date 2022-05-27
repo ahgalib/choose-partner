@@ -27,12 +27,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('logout',[App\Http\Controllers\HomeController::class, 'logout']);
 //Profile 
-Route::get('/createProfile',[ProfileCon::class,'createProfile']);
-Route::post('/saveProfile',[profileCon::class,'saveProfile']);
-Route::get('/profilePage/{id}',[ProfileCon::class,'showProfilePage']);
-Route::get('/editProfile/{id}',[ProfileCon::class,'showEditProfilePage']);
-Route::post('/saveEditProfile/{id}',[ProfileCon::class,'saveEditProfilePage']);
+Route::get('/createProfile',[ProfileCon::class,'createProfile'])->middleware(['auth']);
+Route::post('/saveProfile',[profileCon::class,'saveProfile'])->middleware(['auth']);
+Route::get('/profilePage/{id}',[ProfileCon::class,'showProfilePage'])->middleware(['auth']);
+Route::get('/editProfile/{id}',[ProfileCon::class,'showEditProfilePage'])->middleware(['auth']);
+Route::post('/saveEditProfile/{id}',[ProfileCon::class,'saveEditProfilePage'])->middleware(['auth']);
 //YourSelf
-Route::get('/aboutYourSelf',[ProfileCon::class,'aboutYourSelfPageForm']);
-Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom']);
+Route::get('/aboutYourSelf',[ProfileCon::class,'aboutYourSelfPageForm'])->middleware(['auth']);
+Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom'])->middleware(['auth']);
 

@@ -25,6 +25,7 @@
             <div class="card">
                 <div class="card-body">
                   <button class="btn btn-primary"><a href="/editYourSelf" class="text-white">edit profile</a></button>
+                    @if(auth::user()->yourSelf)
                     <h4>{{$data->yourSelf->about_you}}</h4>
 
                     <h4>My Hobbi is {{$data->yourSelf->hobbies}}</h4>
@@ -33,7 +34,9 @@
                     <h4>I am{{$data->yourSelf->height}} tall</h4>
                     <h4>My weight is {{$data->yourSelf->weight}}</h4>
                     <h4>My dream {{$data->yourSelf->dream}}</h4>
-                    
+                    @else
+                    <button><a href="/aboutYourSelf">crete your your self option</a></button>
+                    @endif
                 </div>
             </div>
         </div>

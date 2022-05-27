@@ -54,6 +54,7 @@ class ProfileCon extends Controller
         //return $request->all();
         YourSelf::create([
             'user_profile_id'=>auth()->user()->profile->id,
+            'user_id'=>auth()->user()->id,
             'about_you'=>$request['about_you'],
             'hobbies'=>$request['hobbies'],
             'aim'=>$request['aim'],
@@ -63,7 +64,7 @@ class ProfileCon extends Controller
             'dream'=>$request['dream'],
             
         ]);
-        return back();
+        return redirect("/profilePage/{$request->user()->profile->id}");
     }
 
     public function showEditProfilePage($id){

@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -81,5 +81,9 @@
             @yield('content')
         </main>
     </div>
+
+<script src="{{url('javaScr/jquery.js') }}" type="text/javascript"></script>
+<script src="{{url('javaScr//frontJs.js') }}" type="text/javascript"></script>
 </body>
+
 </html>
