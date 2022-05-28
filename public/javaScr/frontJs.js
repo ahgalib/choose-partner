@@ -1,7 +1,18 @@
 $(document).ready(function(){
-    $("#hobbies").click(function(){
-        alert('fksdkfl');
+    $(".hobbies").click(function(){
+        var hobbies = getFilter(this);
+        //alert(fabric);
+        $.ajax({
+            url:'/home',
+            type:'get',
+            data:{hobbies:hobbies},
+            success:function(data){
+                $(".filter_products").html(data);
+            }
+        })
     });
+
+
 
     function getFilter(class_name){
         var filter = [];
@@ -10,4 +21,6 @@ $(document).ready(function(){
         })
         return filter
     }
+
+   
 })

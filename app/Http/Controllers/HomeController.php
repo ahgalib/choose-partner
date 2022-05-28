@@ -23,11 +23,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $profile = UserProfile::all();
-        $self = YourSelf::all();
-        return view('home',compact('profile','self'));
+        if($request->ajax()){
+            $data = $request->all();
+            // echo "<pre>";print_r($data);die;
+            $self=YourSelf::whereIn('hobbies',$data['hobbies'])->get()->toArray();
+            // echo "<pre>";print_r($self);die;
+            // $profile = UserProfile::all();
+            // $self = YourSelf::all();
+            // if(isset($data['hobbies']) && !empty($data['hobbies'])){
+            //     $profile->whereIn('profile.hobbies',$data['hobbies']);
+            // }
+            return view('home',compact('profile','self'));
+        }else{
+            
+            $profile = UserProfile::all();
+            $self = YourSelf::all();
+            return view('home',compact('profile','self'));
+        }
+      
     }
 
     public function logout(){

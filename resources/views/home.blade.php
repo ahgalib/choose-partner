@@ -32,22 +32,22 @@
                 <input type="text" name="url" value="" id="url">
                 @foreach($self as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="hobbies" name="hobbies[]" value="{{$allSelf->hobbies}}"></div>
+                        <div style="margin-right:5px;"><input type="checkbox" class="hobbies" id="{{$allSelf->hobbies}}" name="hobbies[]" value="{{$allSelf->hobbies}}"></div>
                         <div> <p>{{$allSelf->hobbies}}</p></div>
                     </div>
                 @endforeach  
                 <h5>Aim</h5>
                 @foreach($self as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="aim" name="aim[]" value="{{$allSelf->hobbies}}"></div>
-                        <div> <p>{{$allSelf->hobbies}}</p></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="aim" name="aim[]" value="{{$allSelf->aim}}"></div>
+                        <div> <p>{{$allSelf->aim}}</p></div>
                     </div>
                 @endforeach  
                 <h5>Favourite Thing</h5>
                 @foreach($self as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="favourite_thing[]" name="favourite_thing" value="{{$allSelf->hobbies}}"></div>
-                        <div> <p>{{$allSelf->hobbies}}</p></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="favourite_thing[]" name="favourite_thing" value="{{$allSelf->favourite_thing}}"></div>
+                        <div> <p>{{$allSelf->favourite_thing}}</p></div>
                     </div>
                 @endforeach 
                 <h5>height</h5> 
@@ -73,13 +73,22 @@
                 @endforeach  
                 </div>
             </div>
-            @foreach($profile as $allProfile)
-                <div class="col-md-2 m-3">
-                    <p>{{$allProfile->name}}</p>
-                    <img src="/storage/{{$allProfile['profile_picture']}}" alt="" style="width:200px;height:170px;border-radius: 50%;">
-
-                </div>
-            @endforeach  
+            <div class="col-md-8 filter_products">
+           
+           <div class="row">
+               @foreach($self as $allProfile)
+                   <div class="col-md-4">
+                       <p>{{$allProfile->name}}</p>
+                       <img src="/storage/{{$allProfile['profile_picture']}}" alt="" style="width:200px;height:170px;border-radius: 50%;">
+                       <p>{{$allProfile->hobbies}}</p>
+                   </div>
+               @endforeach  
+           </div>
+               
+         
+       </div>
+        </div>
+       
 
         
         
