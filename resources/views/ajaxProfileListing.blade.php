@@ -1,13 +1,10 @@
-<div class="filter_products">
-@foreach($self as $allProfile)
-                    <div class="col-md-4">
-                      
-                    
-                      
-                    
-                        <p>{{$allProfile->hobbies}}</p>
-                        <p>{{$allProfile->height}}</p>
-                        <p>{{$allProfile->weight}}</p>
-                    </div>
-                @endforeach  
-</div>
+<div class="row">
+               
+               @foreach($profile as $allProfile)
+                   <div class="col-md-4">
+                       <p>{{$allProfile['name']}}</p>
+                       <img src="/storage/{{$allProfile['profile_picture']}}" alt="" style="width:200px;height:170px;border-radius: 50%;">
+                     
+                   </div>
+               @endforeach  
+           </div>

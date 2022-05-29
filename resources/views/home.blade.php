@@ -24,19 +24,31 @@
             @endif
         </div>
     </div>
+    <div class="row justify-content-center">
       
+            <div class="col-md-10">
+                <select name="sort" id="sort" class="sort">
+                    <option value="profile_first_to_last">sort Profile</option>
+                    <option value="profile_name_a_z">A-Z</option>
+                    <option value="profile_name_z_a">Z-A</option>
+                    <option value="profile_last_to_first">Accessding</option>
+                </select>
+            </div>
+     
+    </div>
     <div class="row">
         <div class="col-md-3">
             <div class="card p-3">
-                <h5>Hobbies</h5>
+                <h5>Education</h5>
                 <input type="text" name="url" value="" id="url">
-                @foreach($self as $allSelf)
+                
+                @foreach($profile as $allProfile)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" class="hobbies" id="{{$allSelf->hobbies}}" name="hobbies[]" value="{{$allSelf->hobbies}}"></div>
-                        <div> <p>{{$allSelf->hobbies}}</p></div>
+                        <div style="margin-right:5px;"><input type="checkbox" class="education" name="education[]" value="{{$allProfile->education}}"></div>
+                        <div> <p>{{$allProfile->education}}</p></div>
                     </div>
                 @endforeach  
-                <h5>Aim</h5>
+                <!-- <h5>Aim</h5>
                 @foreach($self as $allSelf)
                     <div class="d-flex">
                         <div style="margin-right:5px;"><input type="checkbox" id="aim" name="aim[]" value="{{$allSelf->aim}}"></div>
@@ -70,20 +82,12 @@
                         <div style="margin-right:5px;"><input type="checkbox" id="dream" name="dream[]" value=""></div>
                         <div> <p>{{$allSelf->hobbies}}</p></div>
                     </div>
-                @endforeach  
-                </div>
+                @endforeach  -->
+                </div> 
             </div>
             <div class="col-md-8 filter_products">
            
-           <div class="row">
-               @foreach($self as $allProfile)
-                   <div class="col-md-4">
-                       <p>{{$allProfile->name}}</p>
-                       <img src="/storage/{{$allProfile['profile_picture']}}" alt="" style="width:200px;height:170px;border-radius: 50%;">
-                       <p>{{$allProfile->hobbies}}</p>
-                   </div>
-               @endforeach  
-           </div>
+           @include('ajaxProfileListing')
                
          
        </div>
