@@ -7,6 +7,7 @@ use App\Models\UserProfile;
 use App\Models\User;
 use App\Models\YourSelf;
 use auth;
+use App\Models\MorePhoto;
 class ProfileCon extends Controller
 {
     public function createProfile(){
@@ -92,5 +93,24 @@ class ProfileCon extends Controller
         ));
         return redirect("/profilePage/{$request->user()->profile->id}");
 
+    }
+
+    public function morePhotoUpload(){
+         return view('profile.uploadMorePhoto');
+    }
+
+    public function saveMorePhotoUpload(Request $request){
+        $request->validate([
+            'photo'=>'required',
+        ]);
+        $imagePath = $request['photo']->store('profile','public');
+        MorePhoto::create([
+            'user_id'=>auth()->user()->id,
+            'user_profile_id'=>auth()->user()->profile->id,
+            'photo'=>$imagePath,
+            'caption'=>$request['caption'],
+
+        ]);
+        return redirect("profilePage/{$request->user()->profile->id}");
     }
 }

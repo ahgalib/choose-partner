@@ -10,34 +10,53 @@
                     <img src="/storage/{{$data['profile_picture']}}" alt="" style="width:300px;height:270px;">
                 </div>
                 <div class="ml-5">
-                    <p>{{$data->name}}</p>
-                    <p>{{$data['user']['email']}}</p>
-                    <p>{{$data['user']['name']}}</p>
-                    <p>{{$data->bio}}</p>
-                    <p>{{$data->education}}</p> <p>{{$data->date_of_birth}}</p>
+                    <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data->name}}</p>
+                    <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data['user']['email']}}</p>
+                    <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data['user']['name']}}</p>
+                    <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data->bio}}</p>
+                    <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data->education}}</p> <p>{{$data->date_of_birth}}</p>
 
                     <p>{{auth::user()->id}}</p>
-                    <button class="btn btn-primary"><a href="/editProfile/{{$data->id}}" class="text-white">edit profile</a></button>
+                  
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-2">
+            <button class="btn btn-primary"><a href="/morePhoto" class="text-white">Upload Photo</a></button>
+            <button class="btn btn-primary m-3"><a href="/editProfile/{{$data->id}}" class="text-white">edit profile</a></button>
+        </div>
+        <div class="col-md-7 mt-4 p-4 bg-dark">
             <div class="card">
-                <div class="card-body">
-                  <button class="btn btn-primary"><a href="/editYourSelf" class="text-white">edit profile</a></button>
+                <div class="card-header">
+                    <h2 style="font-family:Lucida Handwriting;color:#ff0047;">Some of my Info</h2>
+                </div>
+                <div class="card-body bg-warning">
+                 
                     @if(auth::user()->yourSelf)
-                    <h4>{{$data->yourSelf->about_you}}</h4>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->yourSelf->about_you}}</p>
 
-                    <h4>My Hobbi is {{$data->yourSelf->hobbies}}</h4>
-                    <h4>My Altimate goal is {{$data->yourSelf->aim}}</h4>
-                    <h4>{{$data->yourSelf->favourite_things}} I love to do</h4>
-                    <h4>I am{{$data->yourSelf->height}} tall</h4>
-                    <h4>My weight is {{$data->yourSelf->weight}}</h4>
-                    <h4>My dream {{$data->yourSelf->dream}}</h4>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Hobbi is {{$data->yourSelf->hobbies}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Altimate goal is {{$data->yourSelf->aim}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->yourSelf->favourite_things}} I love to do</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">I am{{$data->yourSelf->height}} tall</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My weight is {{$data->yourSelf->weight}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My dream {{$data->yourSelf->dream}}</p>
                     @else
-                    <button><a href="/aboutYourSelf">crete your your self option</a></button>
+                        <button><a href="/aboutYourSelf">crete your your self option</a></button>
                     @endif
                 </div>
+                <div class="card-footer">
+                <button class="btn btn-primary"><a href="/editYourSelf" class="text-white">edit profile</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mt-4">
+            <div class="row">
+                @foreach($data['photo'] as $photo)
+                    <div class="col-md-6">
+                        <img src="/storage/{{$photo['photo']}}" alt="" style="width:200px;height:170px;">
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

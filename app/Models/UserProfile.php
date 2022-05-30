@@ -18,6 +18,10 @@ class UserProfile extends Model
         return $this->hasOne(YourSelf::class);
     }
 
+    public function photo(){
+        return $this->hasMany(MorePhoto::class);
+    }
+
     
 
     

@@ -26,20 +26,25 @@
     </div>
     <div class="row justify-content-center">
       
-            <div class="col-md-10">
-                <select name="sort" id="sort" class="sort">
-                    <option value="profile_first_to_last">sort Profile</option>
-                    <option value="profile_name_a_z">A-Z</option>
-                    <option value="profile_name_z_a">Z-A</option>
-                    <option value="profile_last_to_first">Accessding</option>
-                </select>
-            </div>
+        <div class="col-md-10">
+            
+        </div>
      
     </div>
     <div class="row">
         <div class="col-md-3">
             <div class="card p-3">
-                <h5>Education</h5>
+            <div class="control-group">
+			    <label class="control-label alignL">Sort Profile </label>
+                <select name="sort" id="sort" class="form-control select2 sort">
+                    <option value="profile_first_to_last">sort Profile</option>
+                    <option value="profile_name_a_z">A-Z</option>
+                    <option value="profile_name_z_a">Z-A</option>
+                    <option value="profile_last_to_first">Accessding</option>
+                   
+                </select>
+            </div>
+                <!-- <h5>Education</h5>
                 <input type="text" name="url" value="" id="url">
                 
                 @foreach($profile as $allProfile)
@@ -47,7 +52,7 @@
                         <div style="margin-right:5px;"><input type="checkbox" class="education" name="education[]" value="{{$allProfile->education}}"></div>
                         <div> <p>{{$allProfile->education}}</p></div>
                     </div>
-                @endforeach  
+                @endforeach   -->
                 <!-- <h5>Aim</h5>
                 @foreach($self as $allSelf)
                     <div class="d-flex">
@@ -86,11 +91,8 @@
                 </div> 
             </div>
             <div class="col-md-8 filter_products">
-           
-           @include('ajaxProfileListing')
-               
-         
-       </div>
+                 @include('ajaxProfileListing')
+            </div>
         </div>
        
 

@@ -12,12 +12,14 @@ $(document).ready(function(){
             }
         });
     });
+    
 
     $(".education").on('click',function(){
         var education = getFilter(this);
+       
        // alert(education);
         $.ajax({
-            url:'home',
+            url:'homeAjax',
             type:'get',
             data:{education:education},
             success:function(data){

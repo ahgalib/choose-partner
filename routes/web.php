@@ -25,7 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::post('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/homeAjax', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('logout',[App\Http\Controllers\HomeController::class, 'logout']);
 //Profile 
 Route::get('/createProfile',[ProfileCon::class,'createProfile'])->middleware(['auth']);
@@ -36,4 +36,6 @@ Route::post('/saveEditProfile/{id}',[ProfileCon::class,'saveEditProfilePage'])->
 //YourSelf
 Route::get('/aboutYourSelf',[ProfileCon::class,'aboutYourSelfPageForm'])->middleware(['auth']);
 Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom'])->middleware(['auth']);
-
+//More Photo route
+Route::get('/morePhoto',[ProfileCon::class,'morePhotoUpload'])->middleware(['auth']);
+Route::post('/morePhotoUpload',[ProfileCon::class,'saveMorePhotoUpload'])->middleware(['auth']);

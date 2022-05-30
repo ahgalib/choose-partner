@@ -25,39 +25,36 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {   
-      if($request->ajax()){
-        $data = $request->all();
-        //echo "<pre>";print_r($data);die;
-        if(isset($data['education']) && !empty($data['education'])){
-            $profile = UserProfile::whereIn('education',$data['education'])->get()->toArray();
-           //echo "<pre>";print_r($profile);die;
-           return view('ajaxProfileListing',compact('profile','self'));
-        }
-
-        if(isset($data['sort']) && !empty($data['sort'])){
-            if($data['sort'] == "profile_first_to_last"){
-                $self = YourSelf::all();
-                $profile =UserProfile::with('yourSelf')->orderBy('user_id','Asc')->get()->toArray();
-            }
-            if($data['sort'] == "profile_last_to_first"){
-                $self = YourSelf::all();
-                $profile =UserProfile::with('yourSelf')->orderBy('user_id','Desc')->get()->toArray();
-            }
-            if($data['sort'] == "profile_name_a_z"){
-                $self = YourSelf::all();
-                $profile =UserProfile::with('yourSelf')->orderBy('name','Asc')->get()->toArray();
-            }
-            if($data['sort'] == "profile_name_z_a"){
-                $self = YourSelf::all();
-                $profile =UserProfile::with('yourSelf')->orderBy('name','Desc')->get()->toArray();
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>";print_r($data);die;
+            if(isset($data['education']) && !empty($data['education'])){
+                $profile = UserProfile::whereIn('education',$data['education'])->get()->toArray();
+            //echo "<pre>";print_r($profile);die;
+            return view('ajaxProfileListing',compact('profile','self'));
             }
 
-           
-        } 
-         //education sort option
-         
-        return view('ajaxProfileListing',compact('profile','self'));
-      }else{
+            if(isset($data['sort']) && !empty($data['sort'])){
+                if($data['sort'] == "profile_first_to_last"){
+                    $self = YourSelf::all();
+                    $profile =UserProfile::with('yourSelf')->orderBy('user_id','Asc')->get()->toArray();
+                }
+                if($data['sort'] == "profile_last_to_first"){
+                    $self = YourSelf::all();
+                    $profile =UserProfile::with('yourSelf')->orderBy('user_id','Desc')->get()->toArray();
+                }
+                if($data['sort'] == "profile_name_a_z"){
+                    $self = YourSelf::all();
+                    $profile =UserProfile::with('yourSelf')->orderBy('name','Asc')->get()->toArray();
+                }
+                if($data['sort'] == "profile_name_z_a"){
+                    $self = YourSelf::all();
+                    $profile =UserProfile::with('yourSelf')->orderBy('name','Desc')->get()->toArray();
+                }
+            } 
+            
+            return view('ajaxProfileListing',compact('profile','self'));
+        }else{
             $profile = UserProfile::all();
             $self = YourSelf::all();
         }
