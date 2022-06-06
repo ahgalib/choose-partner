@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\YourSelf;
 use auth;
 use App\Models\MorePhoto;
+use App\Models\Follower;
 class ProfileCon extends Controller
 {
     public function createProfile(){
@@ -103,14 +104,35 @@ class ProfileCon extends Controller
         $request->validate([
             'photo'=>'required',
         ]);
-        $imagePath = $request['photo']->store('profile','public');
-        MorePhoto::create([
-            'user_id'=>auth()->user()->id,
-            'user_profile_id'=>auth()->user()->profile->id,
-            'photo'=>$imagePath,
-            'caption'=>$request['caption'],
+        $images = $request->file('photo');
+       
+        // MorePhoto::create([
+        //     'user_id'=>auth()->user()->id,
+        //     'user_profile_id'=>auth()->user()->profile->id,
+        //     'photo'=>$imagePath,
+        //     'caption'=>$request['caption'],
 
-        ]);
+        // ]);
+        foreach ($images as $key => $image) {
+            $imagePath = $image->store('profile','public');
+            //dd($imagePath);
+           // $mainImage = $image->store('product_image','public');
+            MorePhoto::create([
+                'user_id'=>auth()->user()->id,
+                'user_profile_id'=>auth()->user()->profile->id,
+                'photo'=>$imagePath,
+            ]);
+        }
         return redirect("profilePage/{$request->user()->profile->id}");
+    }
+
+    public function followOption(Request $request, $id){
+       //return $request->user()->profile->id;
+       Follower::create([
+           'user_id'=>auth()->user()->id,
+           'user_profile_id'=>auth()->user()->profile->id,
+       ]);
+       return back();
+
     }
 }

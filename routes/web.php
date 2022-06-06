@@ -39,3 +39,5 @@ Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom'])->middleware(
 //More Photo route
 Route::get('/morePhoto',[ProfileCon::class,'morePhotoUpload'])->middleware(['auth']);
 Route::post('/morePhotoUpload',[ProfileCon::class,'saveMorePhotoUpload'])->middleware(['auth']);
+//follow option 
+Route::post('/follow/{id}',[ProfileCon::class,'followOption']);

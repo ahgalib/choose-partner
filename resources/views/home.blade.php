@@ -1,37 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container" style="background-color:#6c757d;">
+    <div class="row justify-content-center bg-dark p-5 mb-5">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header bg-warning p-3">Choose your Partner</div>
 
-                <div class="card-body">
+                <div class="card-body bg-success p-4 text-light">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Have a good partner is blessing..so find your Partner') }}
                 </div>
             </div>
             @if(auth()->user()->profile)
-            <button class="btn btn-primary m-3"><a href="/profilePage/{{auth()->user()->profile->id}}" class="text-light" style="text-decoration:none;">Viist Your Profile</a></button>
+                <button class="btn btn-outline-danger m-3"><a href="/profilePage/{{auth()->user()->profile->id}}" class="text-light" style="text-decoration:none;">{{auth()->user()->profile->name}}'s  Profile</a></button>
             @else
-            <button class="btn btn-primary m-3"><a href="/createProfile" class="text-light" style="text-decoration:none;">Create Your Profile</a></button>
+                <button class="btn btn-primary m-3"><a href="/createProfile" class="text-light" style="text-decoration:none;">Create Your Profile</a></button>
             @endif
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bg-secondary">
       
         <div class="col-md-10">
             
         </div>
      
     </div>
-    <div class="row">
+    <div class="row  bg-secondary">
         <div class="col-md-3">
             <div class="card p-3">
             <div class="control-group">

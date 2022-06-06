@@ -22,8 +22,28 @@
             </div>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-primary"><a href="/morePhoto" class="text-white">Upload Photo</a></button>
-            <button class="btn btn-primary m-3"><a href="/editProfile/{{$data->id}}" class="text-white">edit profile</a></button>
+            
+            @if(auth::user()->profile->id == $data->id)
+                <button class="btn btn-outline-dark"><a href="/morePhoto" style="text-decoration:none;">Upload Photo</a></button>
+                <button class="btn btn-outline-dark  m-3"><a href="/editProfile/{{$data->id}}" style="text-decoration:none;">edit profile</a></button>
+                <!-- <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button> -->
+            @endif
+            @if(!$data->FollowedBy($data['user']->profile))
+                <form action="/follow/{{$data->id}}" method="post">
+                    @csrf
+                    <button class="btn btn-primary m-3">Following</button>
+                </form>
+            @else
+               
+                    <form action="/unfollow/{{$data->id}}" method="post">
+                        @csrf
+                        <button class="btn btn-primary m-3">UnFollow</button>
+                    </form>
+               
+            @endif
+            <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button>
+                
+          
         </div>
         <div class="col-md-7 mt-4 p-4 bg-dark">
             <div class="card">
@@ -54,7 +74,7 @@
             <div class="row">
                 @foreach($data['photo'] as $photo)
                     <div class="col-md-6">
-                        <img src="/storage/{{$photo['photo']}}" alt="" style="width:200px;height:170px;">
+                        <img src="/storage/{{$photo['photo']}}" alt="" style="width:230px;height:230px;margin-bottom:10px;">
                     </div>
                 @endforeach
             </div>
