@@ -28,11 +28,11 @@ class HomeController extends Controller
         if($request->ajax()){
             $data = $request->all();
             //echo "<pre>";print_r($data);die;
-            if(isset($data['education']) && !empty($data['education'])){
-                $profile = UserProfile::whereIn('education',$data['education'])->get()->toArray();
-            //echo "<pre>";print_r($profile);die;
-            return view('ajaxProfileListing',compact('profile','self'));
-            }
+             if(isset($data['education']) && !empty($data['education'])){
+                 $profile = UserProfile::whereIn('education',$data['education'])->get()->toArray();
+            echo "<pre>";print_r($profile);die;
+            // return view('ajaxProfileListing',compact('profile','self'));
+             }
 
             if(isset($data['sort']) && !empty($data['sort'])){
                 if($data['sort'] == "profile_first_to_last"){
@@ -62,25 +62,39 @@ class HomeController extends Controller
         return view('home',compact('profile','self'));
 
 
-        // if($request->ajax()){
-        //     $data = $request->all();
-        //     // echo "<pre>";print_r($data);die;
-        //     $self=YourSelf::whereIn('hobbies',$data['hobbies'])->get()->toArray();
-        //     // echo "<pre>";print_r($self);die;
-        //     // $profile = UserProfile::all();
-        //     // $self = YourSelf::all();
-        //     // if(isset($data['hobbies']) && !empty($data['hobbies'])){
-        //     //     $profile->whereIn('profile.hobbies',$data['hobbies']);
-        //     // }
-        //     return view('home',compact('profile','self'));
-        // }else{
+        if($request->ajax()){
+            $data = $request->all();
+            echo "<pre>";print_r($data);die;
+            $self=YourSelf::whereIn('hobbies',$data['hobbies'])->get()->toArray();
+            echo "<pre>";print_r($self);die;
+            $profile = UserProfile::all();
+            $self = YourSelf::all();
+            if(isset($data['hobbies']) && !empty($data['hobbies'])){
+                $profile->whereIn('profile.hobbies',$data['hobbies']);
+            }
+            return view('home',compact('profile','self'));
+        }else{
             
-        //     $profile = UserProfile::all();
-        //     $self = YourSelf::all();
-        //     return view('home',compact('profile','self'));
-        // }
+            $profile = UserProfile::all();
+            $self = YourSelf::all();
+            return view('home',compact('profile','self'));
+        }
       
     }
+
+    public function indexPost(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>";print_r($data);die;
+            if(isset($data['education']) && !empty($data['education'])){
+                 $profile = UserProfile::with('yourSelf')->whereIn('education',$data['education'])->get()->toArray();
+           // echo "<pre>";print_r($profile);die;
+            return view('ajaxProfileListing',compact('profile'));
+            }
+        }
+    }
+
+    
 
     public function logout(){
         Auth::logout();

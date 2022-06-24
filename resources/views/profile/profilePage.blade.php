@@ -1,9 +1,32 @@
 @extends('layouts.app')
 @section('content')
+<div class="container-fluid p-0 m-0">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner cur-slider">
+    <div class="carousel-item active ">
+      <img src="{{url('img/romantic-love android-iphone-desktop-hd-backgrounds-wallpapers-1080p-4k-wzqb5.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{url('img/134-1347818_couple-love-pics-couple-in-love-pics-couple.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{url('img/Cute-Love-You-Wallpaper.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
 
+<div class="container-fluid profilePage">
 
-<div class="container">
-    <div class="row">
+    <div class="row p-4">
         <div class="col-md-8">
             <div class="d-flex">
                 <div style="margin-right:50px;margin-bottom:30px;">
@@ -24,24 +47,23 @@
         <div class="col-md-2">
             
             @if(auth::user()->profile->id == $data->id)
-                <button class="btn btn-outline-dark"><a href="/morePhoto" style="text-decoration:none;">Upload Photo</a></button>
-                <button class="btn btn-outline-dark  m-3"><a href="/editProfile/{{$data->id}}" style="text-decoration:none;">edit profile</a></button>
+                <button class="btn btn-outline-dark"><a href="/morePhoto" class="text-light" style="text-decoration:none;">Upload Photo</a></button>
+                <button class="btn btn-outline-dark  m-3"><a class="text-light" href="/editProfile/{{$data->id}}" style="text-decoration:none;">edit profile</a></button>
                 <!-- <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button> -->
             @endif
             @if(!$data->FollowedBy($data['user']->profile))
                 <form action="/follow/{{$data->id}}" method="post">
                     @csrf
-                    <button class="btn btn-primary m-3">Following</button>
+                    <button class="btn btn-warning m-3">Following</button>
                 </form>
             @else
-               
-                    <form action="/unfollow/{{$data->id}}" method="post">
-                        @csrf
-                        <button class="btn btn-primary m-3">UnFollow</button>
-                    </form>
+                <form action="/unfollow/{{$data->id}}" method="post">
+                    @csrf
+                    <button class="btn btn-danger m-3">UnFollow</button>
+                </form>
                
             @endif
-            <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button>
+            <button class="btn btn-warning m-3"><span>{{$data->follower->count()}}</span> Following</button>
                 
           
         </div>
@@ -72,6 +94,7 @@
         </div>
         <div class="col-md-5 mt-4">
             <div class="row">
+           
                 @foreach($data['photo'] as $photo)
                     <div class="col-md-6">
                         <img src="/storage/{{$photo['photo']}}" alt="" style="width:230px;height:230px;margin-bottom:10px;">
@@ -80,7 +103,9 @@
             </div>
         </div>
     </div>
+    
 </div>
+
 
 
 

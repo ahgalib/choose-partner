@@ -15,18 +15,32 @@ $(document).ready(function(){
     
 
     $(".education").on('click',function(){
-        var education = getFilter(this);
+        var education = getFilter('education');
        
-       // alert(education);
+       //alert(education);
         $.ajax({
-            url:'homeAjax',
-            type:'get',
+            url:'/homeAjax',
+            type:'post',
             data:{education:education},
             success:function(data){
                 $(".filter_products").html(data);
             }
         });
     });
+
+    $(".aim").on('click',()=>{
+        var education = getFilter('education');
+        var aim = getFilter('aim')
+        $.ajax({
+            url:'/homeAjax',
+            type:'post',
+            data:{education:education,aim:aim},
+            success:function(data){
+                $(".filter_products").html(data);
+            }
+        });
+       
+    })
 
     function getFilter(class_name){
         var filter = [];

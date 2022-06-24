@@ -25,7 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/homeAjax', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/homeAjax', [App\Http\Controllers\HomeController::class, 'indexPost'])->name('home');
 Route::post('logout',[App\Http\Controllers\HomeController::class, 'logout']);
 //Profile 
 Route::get('/createProfile',[ProfileCon::class,'createProfile'])->middleware(['auth']);
