@@ -27,13 +27,6 @@ class HomeController extends Controller
     {   
         if($request->ajax()){
             $data = $request->all();
-            //echo "<pre>";print_r($data);die;
-             if(isset($data['education']) && !empty($data['education'])){
-                 $profile = UserProfile::whereIn('education',$data['education'])->get()->toArray();
-            echo "<pre>";print_r($profile);die;
-            // return view('ajaxProfileListing',compact('profile','self'));
-             }
-
             if(isset($data['sort']) && !empty($data['sort'])){
                 if($data['sort'] == "profile_first_to_last"){
                     $self = YourSelf::all();
@@ -41,56 +34,46 @@ class HomeController extends Controller
                 }
                 if($data['sort'] == "profile_last_to_first"){
                     $self = YourSelf::all();
-                    $profile =UserProfile::with('yourSelf')->orderBy('user_id','Desc')->get()->toArray();
+                    $profile =UserProfile::with('your_self')->orderBy('user_id','Desc')->get()->toArray();
                 }
                 if($data['sort'] == "profile_name_a_z"){
                     $self = YourSelf::all();
-                    $profile =UserProfile::with('yourSelf')->orderBy('name','Asc')->get()->toArray();
+                    $profile =UserProfile::with('your_self')->orderBy('name','Asc')->get()->toArray();
                 }
                 if($data['sort'] == "profile_name_z_a"){
                     $self = YourSelf::all();
-                    $profile =UserProfile::with('yourSelf')->orderBy('name','Desc')->get()->toArray();
+                    $profile =UserProfile::with('your_self')->orderBy('name','Desc')->get()->toArray();
                 }
             } 
             
             return view('ajaxProfileListing',compact('profile','self'));
         }else{
-            $profile = UserProfile::all();
-            $self = YourSelf::all();
+           // $profile = UserProfile::all();
+            $profile = YourSelf::all();
         }
-        $self = YourSelf::all();
-        return view('home',compact('profile','self'));
-
-
-        if($request->ajax()){
-            $data = $request->all();
-            echo "<pre>";print_r($data);die;
-            $self=YourSelf::whereIn('hobbies',$data['hobbies'])->get()->toArray();
-            echo "<pre>";print_r($self);die;
-            $profile = UserProfile::all();
-            $self = YourSelf::all();
-            if(isset($data['hobbies']) && !empty($data['hobbies'])){
-                $profile->whereIn('profile.hobbies',$data['hobbies']);
-            }
-            return view('home',compact('profile','self'));
-        }else{
-            
-            $profile = UserProfile::all();
-            $self = YourSelf::all();
-            return view('home',compact('profile','self'));
-        }
-      
+       
+        return view('home',compact('profile'));
     }
 
     public function indexPost(Request $request){
         if($request->ajax()){
             $data = $request->all();
             //echo "<pre>";print_r($data);die;
-            if(isset($data['education']) && !empty($data['education'])){
-                 $profile = UserProfile::with('yourSelf')->whereIn('education',$data['education'])->get()->toArray();
+            // if(isset($data['education']) && !empty($data['education'])){
+            //      $profile = UserProfile::with('your_self')->whereIn('education',$data['education'])->get()->toArray();
            // echo "<pre>";print_r($profile);die;
-            return view('ajaxProfileListing',compact('profile'));
+          
+            // }
+            if(isset($data['aim']) && !empty($data['aim'])){
+                $profile = YourSelf::with('user_profile')->whereIn('aim',$data['aim'])->get()->toArray();
+           //echo "<pre>";print_r($profile);die;
             }
+            if(isset($data['favourite_thing']) && !empty($data['favourite_thing'])){
+                $profile = YourSelf::with('user_profile')->whereIn('favourite_thing',$data['favourite_thing'])->get()->toArray();
+           //echo "<pre>";print_r($profile);die;
+            }
+            return view('ajaxProfileListing',compact('profile'));
+          
         }
     }
 

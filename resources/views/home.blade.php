@@ -42,42 +42,37 @@
                 <h5 class="text-warning mt-2">Education</h5>
                 <input type="text" name="url" value="" id="url">
                 
-                @foreach($profile as $allProfile)
-                    <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" class="education" name="education[]" value="{{$allProfile->education}}"></div>
-                        <div> <p>{{$allProfile->education}}</p></div>
-                    </div>
-                @endforeach  
+                <!--  -->
                 <h5 class="text-warning">Aim</h5>
-                @foreach($self as $allSelf)
+                @foreach($profile as $allSelf)
                     <div class="d-flex">
                         <div style="margin-right:5px;"><input type="checkbox"  class="aim" id="aim" name="aim[]" value="{{$allSelf->aim}}"></div>
                         <div> <p>{{$allSelf->aim}}</p></div>
                     </div>
                 @endforeach  
                 <h5 class="text-warning">Favourite Thing</h5>
-                @foreach($self as $allSelf)
+                @foreach($profile as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="favourite_thing[]" name="favourite_thing" value="{{$allSelf->favourite_thing}}"></div>
+                        <div style="margin-right:5px;"><input type="checkbox" class="favourite_thing" name="favourite_thing[]" value="{{$allSelf->favourite_thing}}"></div>
                         <div> <p>{{$allSelf->favourite_thing}}</p></div>
                     </div>
                 @endforeach 
                 <h5 class="text-warning">height</h5> 
-                @foreach($self as $allSelf)
+                @foreach($profile as $allSelf)
                     <div class="d-flex">
                         <div style="margin-right:5px;"><input type="checkbox" id="height" name="height[]" value="{{$allSelf->hobbies}}"></div>
                         <div> <p>{{$allSelf->height}}</p></div>
                     </div>
                 @endforeach 
                 <h5 class="text-warning">Weight</h5> 
-                @foreach($self as $allSelf)
+                @foreach($profile as $allSelf)
                     <div class="d-flex">
                         <div style="margin-right:5px;"><input type="checkbox" id="weight" name="weight[]" value="{{$allSelf->hobbies}}"></div>
                         <div> <p>{{$allSelf->weight}}</p></div>
                     </div>
                 @endforeach  
                 <h5 class="text-warning">Dream</h5> 
-                @foreach($self as $allSelf)
+                @foreach($profile as $allSelf)
                     <div class="d-flex">
                         <div style="margin-right:5px;"><input type="checkbox" id="dream" name="dream[]" value=""></div>
                         <div> <p>{{$allSelf->dream}}</p></div>

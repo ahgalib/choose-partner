@@ -18,7 +18,7 @@ class UserProfile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function yourSelf(){
+    public function your_self(){
         return $this->hasOne(YourSelf::class);
     }
 
