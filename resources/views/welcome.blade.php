@@ -2,6 +2,6 @@
 
 @section('content')
 <h2>Please Login Your Account</h2>
-<a href="/login">Login</a>
+<h1><a href="/login" class="btn btn-info">Login</a></h1>
 
 @endsection

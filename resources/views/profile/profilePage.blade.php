@@ -75,14 +75,14 @@
                 <div class="card-body bg-warning">
                  
                     @if(auth::user()->yourSelf)
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->yourSelf->about_you}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->your_self->about_you}}</p>
 
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Hobbi is {{$data->yourSelf->hobbies}}</p>
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Altimate goal is {{$data->yourSelf->aim}}</p>
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->yourSelf->favourite_things}} I love to do</p>
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">I am{{$data->yourSelf->height}} tall</p>
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My weight is {{$data->yourSelf->weight}}</p>
-                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My dream {{$data->yourSelf->dream}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Hobbi is {{$data->your_self->hobbies}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My Altimate goal is {{$data->your_self->aim}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">{{$data->your_self->favourite_things}} I love to do</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">I am{{$data->your_self->height}} tall</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My weight is {{$data->your_self->weight}}</p>
+                        <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My dream {{$data->your_self->dream}}</p>
                     @else
                         <button><a href="/aboutYourSelf">crete your your self option</a></button>
                     @endif
