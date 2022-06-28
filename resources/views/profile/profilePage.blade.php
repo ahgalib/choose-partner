@@ -84,7 +84,8 @@
                         <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My weight is {{$data->your_self->weight}}</p>
                         <p style="font-family:Lucida Handwriting;font-size:19px;color:#ff0047;">My dream {{$data->your_self->dream}}</p>
                     @else
-                        <button><a href="/aboutYourSelf">crete your your self option</a></button>
+                        <button class="btn btn-dark"><a href="/aboutYourSelf" class="text-light">crete your your self option</a></button>
+                        <p>Create your self to see your profile in home page</p>
                     @endif
                 </div>
                 <div class="card-footer">

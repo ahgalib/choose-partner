@@ -24,7 +24,10 @@
  <div class="container-fluid mainCon p-0">
     <div class="row justify-content-center">
       <div class="col-md-10">    
-    </div>
+        @if(!auth::user()->profile)
+        <button class="btn btn-lg btn-danger m-3"><a href="/createProfile" class="text-light">Create Your Profile</a></button>
+        @endif
+      </div>
     </div>
     <div class="row p-0">
         <div class="col-md-3 text-light ">

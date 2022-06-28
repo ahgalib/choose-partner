@@ -1,5 +1,11 @@
 $(document).ready(function(){
  
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
     $("#sort").on('change',function(){
         var sort = $(".sort").val();
        

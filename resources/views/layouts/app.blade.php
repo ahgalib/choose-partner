@@ -70,11 +70,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item" style="margin-left:500px;">
-                                <a id="navbarDropdown" class="nav-link" href="/profilePage/{{auth()->user()->profile->id}}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
+                            @if(auth::user()->profile)
+                                <li class="nav-item" style="margin-left:500px;">
+                                    <a id="navbarDropdown" class="nav-link" href="/profilePage/{{auth()->user()->profile->id}}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                </li>
+                            @else
+                                <li class="nav-item" style="margin-left:500px;">
+                                    <a id="navbarDropdown" class="nav-link" href="" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                </li>
+                            @endif
+
                             <li style="margin-left:60px;">
                                 <div class="text-light" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item text-light" href="logout"
