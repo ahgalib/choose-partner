@@ -1,27 +1,27 @@
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid p-0 m-0">
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner cur-slider">
-    <div class="carousel-item active ">
-      <img src="{{url('img/romantic-love android-iphone-desktop-hd-backgrounds-wallpapers-1080p-4k-wzqb5.jpg')}}" class="d-block w-100" alt="...">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner cur-slider">
+            <div class="carousel-item active ">
+            <img src="{{url('img/romantic-love android-iphone-desktop-hd-backgrounds-wallpapers-1080p-4k-wzqb5.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="{{url('img/134-1347818_couple-love-pics-couple-in-love-pics-couple.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="{{url('img/Cute-Love-You-Wallpaper.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-item">
-      <img src="{{url('img/134-1347818_couple-love-pics-couple-in-love-pics-couple.jpg')}}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{{url('img/Cute-Love-You-Wallpaper.jpg')}}" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 </div>
 
 <div class="container-fluid profilePage">
@@ -38,34 +38,41 @@
                     <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data['user']['name']}}</p>
                     <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data->bio}}</p>
                     <p style="font-family:Bell MT;font-weight:bold;font-size:21px;">{{$data->education}}</p> <p>{{$data->date_of_birth}}</p>
-
-                    <p>{{auth::user()->id}}</p>
-                  
+                    <p>{{auth::user()->id}}</p>          
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 d-flex">
             
             @if(auth::user()->profile->id == $data->id)
-                <button class="btn btn-outline-dark"><a href="/morePhoto" class="text-light" style="text-decoration:none;">Upload Photo</a></button>
-                <button class="btn btn-outline-dark  m-3"><a class="text-light" href="/editProfile/{{$data->id}}" style="text-decoration:none;">edit profile</a></button>
-                <!-- <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button> -->
+                <div>
+                    <button class="btn btn-outline-dark"><a href="/morePhoto" class="text-light" style="text-decoration:none;">Upload Photo</a></button>
+                    <button class="btn btn-outline-dark  m-3"><a class="text-light" href="/editProfile/{{$data->id}}" style="text-decoration:none;">edit profile</a></button>
+                    <!-- <button class="btn btn-primary m-3"><span>{{$data->follower->count()}}</span> Following</button> -->
+                </div>
             @endif
-            @if(!$data->FollowedBy($data['user']->profile))
-                <form action="/follow/{{$data->id}}" method="post">
-                    @csrf
-                    <button class="btn btn-warning m-3">Following</button>
-                </form>
-            @else
-                <form action="/unfollow/{{$data->id}}" method="post">
-                    @csrf
-                    <button class="btn btn-danger m-3">UnFollow</button>
-                </form>
-               
-            @endif
-            <button class="btn btn-warning m-3"><span>{{$data->follower->count()}}</span> Following</button>
+            <div class="d-flex">
+                @if(!$data->FollowedBy($data['user']->profile))
+                    <form action="/follow/{{$data->id}}" method="post">
+                        @csrf
+                        <button class="btn btn-warning m-3">Following</button>
+                    </form>
+                @else
+                    <form action="/unfollow/{{$data->id}}" method="post">
+                        @csrf
+                        <button class="btn btn-danger m-3">UnFollow</button>
+                    </form>
                 
-          
+                @endif
+               <div>
+                    <button class="btn btn-warning m-3"><span>{{$data->follower->count()}}</span> Following</button>
+               </div>
+               <div>
+                <!-- Messages part -->
+                    <button class="btn btn-danger m-3"><a href="/message/{{$data->id}}">Message</a></button>
+                  
+               </div>
+            </div>                         
         </div>
         <div class="col-md-7 mt-4 p-4 bg-dark">
             <div class="card">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileCon;
+use App\Http\Controllers\MessageController;
 
 
 /*
@@ -41,3 +42,7 @@ Route::get('/morePhoto',[ProfileCon::class,'morePhotoUpload'])->middleware(['aut
 Route::post('/morePhotoUpload',[ProfileCon::class,'saveMorePhotoUpload'])->middleware(['auth']);
 //follow option 
 Route::post('/follow/{id}',[ProfileCon::class,'followOption']);
+
+// Message
+Route::get('/message/{to_id}',[MessageController::class,'showMessagePage']);
+Route::post('/saveMessage',[MessageController::class,'saveMessage'])->middleware(['auth']);
