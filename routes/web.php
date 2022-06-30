@@ -44,5 +44,5 @@ Route::post('/morePhotoUpload',[ProfileCon::class,'saveMorePhotoUpload'])->middl
 Route::post('/follow/{id}',[ProfileCon::class,'followOption']);
 
 // Message
-Route::get('/message/{to_id}',[MessageController::class,'showMessagePage']);
+ Route::get('/message/{id}',[MessageController::class,'showMessagePage']);
 Route::post('/saveMessage',[MessageController::class,'saveMessage'])->middleware(['auth']);

@@ -9,11 +9,13 @@ use auth;
 
 class MessageController extends Controller
 {
-    public function showMessagePage($to_id,Request $request){
-        $data = Message::find($to_id);
-        $profile = UserProfile::find($to_id);
-        //echo "<pre>";print_r($data);die;
-        return view('profile.message',compact('data','profile'));
+    public function showMessagePage($to_id){
+         $data = Message::find($to_id)->where('to_id',$to_id)->get()->toArray();
+        // $profile = UserProfile::find($to_id);
+         //$msgId = Message::where(['to_id'=>$profile])->get()->toArray();
+        
+        echo "<pre>";print_r($data);die;
+         return view('profile.message',compact('data'));
     }
 
     public function saveMessage(Request $request){
