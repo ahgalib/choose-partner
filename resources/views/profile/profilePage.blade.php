@@ -69,24 +69,26 @@
                </div>
                <div>
                 <!-- Messages part -->
-                    <button class="btn btn-danger m-3"><a href="/message/{{$data->id}}">Message</a></button>
-                    <form action="/saveMessage" method="post">
-                        @csrf
-                            <h2 style="text-decoration:underline;">Welcome to message Page</h2>
-                            <div>
-                            <input type="hidden" name="to_id" value="{{$data->id}}">
-                                <textarea name="message_body" id="" cols="40" rows="6"></textarea>
-                            </div>
+              
+                <button class="btn btn-danger m-3"><a href="/message/{{$data->id}}">Message</a></button>
+                <form action="/saveMessage" method="post">
+                    @csrf
+                        <h2 style="text-decoration:underline;">Welcome to message Page</h2>
+                        <div>
+                        <input type="hidden" name="to_id" value="{{$data->id}}">
+                            <textarea name="message_body" id="" cols="40" rows="6"></textarea>
+                        </div>
+                    
+                        <div class="form-group ">
                         
-                            <div class="form-group ">
-                            
-                                <div class="col-md-6">
-                                <button class="btn btn-warning pt-2 mt-3">Submit</button>
-                                </div>
+                            <div class="col-md-6">
+                            <button class="btn btn-warning pt-2 mt-3">Submit</button>
                             </div>
+                        </div>
 
-                        </form>
-                           <!-- Messages part End -->
+                    </form>
+                    <!-- Messages part End -->
+                  
                </div>
             </div>                         
         </div>

@@ -24,10 +24,7 @@
  <div class="container-fluid mainCon p-0">
     <div class="row justify-content-center">
       <div class="col-md-10">    
-        @if(!auth::user()->profile)
-        <button class="btn btn-lg btn-danger m-3"><a href="/createProfile" class="text-light">Create Your Profile</a></button>
-        @endif
-      </div>
+    </div>
     </div>
     <div class="row p-0">
         <div class="col-md-3 text-light ">
@@ -42,21 +39,18 @@
                         
                     </select>
                 </div>
-                <h5 class="text-warning mt-2">Education</h5>
-                <input type="text" name="url" value="" id="url">
                 
-                <!--  -->
                 <h5 class="text-warning">Aim</h5>
-                @foreach($profile as $allSelf)
+                @foreach($profile as $allProfile)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox"  class="aim" id="aim" name="aim[]" value="{{$allSelf->aim}}"></div>
-                        <div> <p>{{$allSelf->aim}}</p></div>
+                        <div style="margin-right:5px;"><input type="checkbox" class="aim" name="aim[]" value="{{$allProfile->aim}}"></div>
+                        <div> <p>{{$allProfile->aim}}</p></div>
                     </div>
-                @endforeach  
+                @endforeach 
                 <h5 class="text-warning">Favourite Thing</h5>
                 @foreach($profile as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" class="favourite_thing" name="favourite_thing[]" value="{{$allSelf->favourite_thing}}"></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="favourite_thing[]" name="favourite_thing[]" class="favourite_thing" value="{{$allSelf->favourite_thing}}"></div>
                         <div> <p>{{$allSelf->favourite_thing}}</p></div>
                     </div>
                 @endforeach 
