@@ -51,12 +51,29 @@ $(document).ready(function(){
 
     $(".favourite_thing").on('click',()=>{
         // var education = getFilter('education');
+        var dream = getFilter('dream')
          var aim = getFilter('aim')
          var favourite_thing = getFilter('favourite_thing')
          $.ajax({
              url:'/homeAjax',
              type:'post',
-             data:{aim:aim,favourite_thing:favourite_thing},
+             data:{aim:aim,favourite_thing:favourite_thing,dream:dream},
+             success:function(data){
+                 $(".filter_products").html(data);
+             }
+         });
+        
+     })
+
+     $(".dream").on('click',()=>{
+        // var education = getFilter('education');
+        var dream = getFilter('dream')
+         var aim = getFilter('aim')
+         var favourite_thing = getFilter('favourite_thing')
+         $.ajax({
+             url:'/homeAjax',
+             type:'post',
+             data:{aim:aim,favourite_thing:favourite_thing,dream:dream},
              success:function(data){
                  $(".filter_products").html(data);
              }

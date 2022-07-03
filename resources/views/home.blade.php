@@ -23,8 +23,11 @@
 <!-- Carousel End -->
  <div class="container-fluid mainCon p-0">
     <div class="row justify-content-center">
-      <div class="col-md-10">    
-    </div>
+        <div class="col-md-10">    
+            @if(!auth::user()->profile)
+                    <button class="btn btn-danger btn-lg m-4"><a href="/createProfile" class="text-light">Create Profile</a></button>
+                @endif
+        </div>
     </div>
     <div class="row p-0">
         <div class="col-md-3 text-light ">
@@ -39,7 +42,7 @@
                         
                     </select>
                 </div>
-                
+               
                 <h5 class="text-warning">Aim</h5>
                 @foreach($profile as $allProfile)
                     <div class="d-flex">
@@ -57,21 +60,21 @@
                 <h5 class="text-warning">height</h5> 
                 @foreach($profile as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="height" name="height[]" value="{{$allSelf->hobbies}}"></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="height" class="height" name="height[]" value="{{$allSelf->hobbies}}"></div>
                         <div> <p>{{$allSelf->height}}</p></div>
                     </div>
                 @endforeach 
                 <h5 class="text-warning">Weight</h5> 
                 @foreach($profile as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="weight" name="weight[]" value="{{$allSelf->hobbies}}"></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="weight" class="weight" name="weight[]" value="{{$allSelf->hobbies}}"></div>
                         <div> <p>{{$allSelf->weight}}</p></div>
                     </div>
                 @endforeach  
                 <h5 class="text-warning">Dream</h5> 
                 @foreach($profile as $allSelf)
                     <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="dream" name="dream[]" value=""></div>
+                        <div style="margin-right:5px;"><input type="checkbox" id="dream"class="dream"  name="dream[]" value=""></div>
                         <div> <p>{{$allSelf->dream}}</p></div>
                     </div>
                 @endforeach 

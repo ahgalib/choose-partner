@@ -72,6 +72,10 @@ class HomeController extends Controller
                 $profile = YourSelf::with('user_profile')->whereIn('favourite_thing',$data['favourite_thing'])->get()->toArray();
            //echo "<pre>";print_r($profile);die;
             }
+            if(isset($data['dream']) && !empty($data['dream'])){
+                $profile = YourSelf::with('user_profile')->whereIn('dream',$data['dream'])->get()->toArray();
+           echo "<pre>";print_r($profile);die;
+            }
             return view('ajaxProfileListing',compact('profile'));
           
         }
