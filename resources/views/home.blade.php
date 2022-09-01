@@ -66,10 +66,10 @@
                 @endforeach 
                 <h5 class="text-warning">Weight</h5> 
                 @foreach($profile as $allSelf)
-                    <div class="d-flex">
-                        <div style="margin-right:5px;"><input type="checkbox" id="weight" class="weight" name="weight[]" value="{{$allSelf->hobbies}}"></div>
-                        <div> <p>{{$allSelf->weight}}</p></div>
-                    </div>
+               <div class="d-flex">
+                  <div style="margin-right:5px;"><input type="checkbox" id="weight" class="weight" name="weight[]" value="{{$allSelf->hobbies}}"></div>
+                     <div> <p>{{$allSelf->weight}}</p></div>
+                  </div>
                 @endforeach  
                 <h5 class="text-warning">Dream</h5> 
                 @foreach($profile as $allSelf)

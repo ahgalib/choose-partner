@@ -46,3 +46,4 @@ Route::post('/follow/{id}',[ProfileCon::class,'followOption']);
 // Message
  Route::get('/message/{id}',[MessageController::class,'showMessagePage']);
 Route::post('/saveMessage',[MessageController::class,'saveMessage'])->middleware(['auth']);
+Route::get('/messageChat/{id}',[MessageController::class,'showMessageChatPage']);

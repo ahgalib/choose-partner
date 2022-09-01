@@ -7,7 +7,7 @@
             @foreach($data as $msgid)
                 <div class="d-flex">
                     <div>
-                    <a href="/messageChat/{{$msgid->user->profile->id}}"><img src="/storage/{{$msgid->user->profile->profile_picture}}" alt="" style="width:100px;height:70px;border-radius: 50%;margin-bottom:20px;"></a>
+                    <a href="/message/{{$msgid->user->profile->id}}"><img src="/storage/{{$msgid->user->profile->profile_picture}}" alt="" style="width:100px;height:70px;border-radius: 50%;margin-bottom:20px;"></a>
                     </div>
                     <div>
                     <p>{{$msgid->user->profile->name}}</p>
