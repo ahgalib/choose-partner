@@ -28,7 +28,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/homeAjax', [App\Http\Controllers\HomeController::class, 'indexPost'])->name('home');
 Route::post('logout',[App\Http\Controllers\HomeController::class, 'logout']);
-//Profile 
+//Profile
 Route::get('/createProfile',[ProfileCon::class,'createProfile'])->middleware(['auth']);
 Route::post('/saveProfile',[profileCon::class,'saveProfile'])->middleware(['auth']);
 Route::get('/profilePage/{id}',[ProfileCon::class,'showProfilePage'])->middleware(['auth']);
@@ -40,10 +40,10 @@ Route::post('/saveYourSelf',[ProfileCon::class,'saveYourSelfFrom'])->middleware(
 //More Photo route
 Route::get('/morePhoto',[ProfileCon::class,'morePhotoUpload'])->middleware(['auth']);
 Route::post('/morePhotoUpload',[ProfileCon::class,'saveMorePhotoUpload'])->middleware(['auth']);
-//follow option 
+//follow option
 Route::post('/follow/{id}',[ProfileCon::class,'followOption']);
 
 // Message
  Route::get('/message/{id}',[MessageController::class,'showMessagePage']);
 Route::post('/saveMessage',[MessageController::class,'saveMessage'])->middleware(['auth']);
-Route::get('/messageChat/{id}',[MessageController::class,'showMessageChatPage']);
+//Route::get('/messageChat/{id}',[MessageController::class,'showMessageChatPage']);

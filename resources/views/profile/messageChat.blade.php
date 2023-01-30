@@ -13,10 +13,10 @@
                     <p>{{$msgid->user->profile->name}}</p>
                     <div>{{$msgid->message_body}}</div>
                     </div>
-                </div>          
+                </div>
             @endforeach
         </div>
-        
+
     </div>
 
     <div class="row">
@@ -25,12 +25,12 @@
         @csrf
             <h5 style="text-decoration:underline;">Reply</h5>
             <div>
-            <input type="hidden" name="to_id" value="{{$to_id}}">
+            <input type="text" name="to_id" value="{{$msgid->user->profile->id}}">
                 <textarea name="message_body" id="" cols="40" rows="6"></textarea>
             </div>
-        
+
             <div class="form-group ">
-            
+
                 <div class="col-md-6">
                 <button class="btn btn-warning pt-2 mt-3">Submit</button>
                 </div>

@@ -10,18 +10,11 @@ use auth;
 class MessageController extends Controller
 {
     public function showMessagePage($id,Request $req){
-        $to_id = $id;
-        $from_id = $req->user()->profile->id;
-        if(auth::user()->profile->id == $id){
-         $data = Message::where(['to_id'=>$id])->get();
-        }else{
-            $data = Message::where(['to_id'=>$id,'from_id'=>$from_id])->get();
-        }
-        // $profile = UserProfile::find($to_id);
-         //$msgId = Message::where(['to_id'=>$profile])->get()->toArray();
-        // $data = Message::all();
-        //echo "<pre>";print_r($data);die;
-         return view('profile.message',compact('data','to_id'));
+        $profile_id = $id;
+        //$from_id = $req->user()->profile->id;
+         $data = Message::with('replies')->where('profile_id',$id)->orWhere('user_id',Auth::id())->whereNull('parent_id')->get();
+
+         return view ('profile.message',compact('data','profile_id'));
     }
 
     public function saveMessage(Request $request){
@@ -31,18 +24,17 @@ class MessageController extends Controller
 
         Message::create([
             'user_id'=>auth::user()->id,
-            'user_profile_id'=>auth::user()->profile->id,
-            'from_id'=>auth::user()->profile->id,
-            'to_id'=>$request['to_id'],
+            'profile_id'=>$request['profile_id'],
+            'parent_id'=>$request['parent_id'],
             'message_body'=>$request['message_body'],
         ]);
         return back();
     }
 
-    public function showMessageChatPage($id,Request $req){
-        $to_id = $id;
-        $from_id = $req->user()->profile->id;
-           $data = Message::where(['from_id'=>auth::user()->profile->id,'to_id'=>$id])->get();
-        return view('profile.message',compact('data','to_id'));
-    }
+    // public function showMessageChatPage($id,Request $req){
+    //     $to_id = $id;
+    //     $from_id = $req->user()->profile->id;
+    //     $data = Message::wuth('replies')->get();
+    //     return view('profile.message',compact('data','to_id'));
+    // }
 }

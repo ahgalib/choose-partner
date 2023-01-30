@@ -1,17 +1,17 @@
 .mainCon{
-   
+
     background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),url('../img/20400843.jpg');
     background-position: center;
     background-size: cover;
 
-    
+
 }
 .cardBackImage{
     /* background-image:url('../img/1b2bc69983ee3ff8a91d73fe0411cb17.jpg'); */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/love-wallpaper-hd-for-mobile-samsung-galaxy-j7-android-iphone-hd-wallpaper-background-downloadhd-wallpapers-desktop-background-android-iphone-1080p-4k-sedxw.jpg');
     background-position: center;
     background-size: cover;
-   
+
 }
 
 .cur-slider img{
@@ -21,7 +21,4 @@
     background-position: center;
 }
 
-.profilePage{
-      background-color: #378ddf; 
-   
-}
+

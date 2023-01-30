@@ -1,14 +1,14 @@
 $(document).ready(function(){
- 
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    
+
     $("#sort").on('change',function(){
         var sort = $(".sort").val();
-       
+
        // alert(sort);
         $.ajax({
             url:'/home',
@@ -19,12 +19,12 @@ $(document).ready(function(){
             }
         });
     });
-    
+
 
     // $(".education").on('click',function(){
     //     var education = getFilter('education');
     //     var aim = getFilter('aim')
-       
+
     //    //alert(education);
     //     $.ajax({
     //         url:'/homeAjax',
@@ -62,7 +62,7 @@ $(document).ready(function(){
                  $(".filter_products").html(data);
              }
          });
-        
+
      })
 
      $(".dream").on('click',()=>{
@@ -78,7 +78,7 @@ $(document).ready(function(){
                  $(".filter_products").html(data);
              }
          });
-        
+
      })
 
     function getFilter(class_name){
@@ -89,7 +89,15 @@ $(document).ready(function(){
         return filter
     }
 
+    //get Parent id
+    $(".replyBtn").click(function(){
+       // alert("reply cdlick")
+        var parent_id = $(this).attr('data-id');
+        $("#parent_id_value").attr('value',parent_id)
+        //alert(parent_id)
+    })
 
 
-   
+
+
 });

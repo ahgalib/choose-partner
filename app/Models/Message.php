@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','user_profile_id','from_id','to_id','message_body'];
+    protected $guarded = ['id'];
 
     public function profile(){
         return $this->belongsTo(UserProfile::class);
@@ -16,5 +16,9 @@ class Message extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function replies(){
+        return $this->hasMany(Message::class,'parent_id','id');
     }
 }
